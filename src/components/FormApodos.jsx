@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const FormApodos = ({ numberOfInputs, inputApodos, setInputApodos, setApodoOk }) => {
+const FormApodos = ({ numberOfInputs, inputApodos, setInputApodos, setApodoOk, setJugadores }) => {
 
   // Actualiza el estado cuando cambia el número de inputs
   useEffect(() => {
@@ -18,8 +18,17 @@ const FormApodos = ({ numberOfInputs, inputApodos, setInputApodos, setApodoOk })
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Valores ingresados:', inputApodos);
-    // Aquí puedes hacer cualquier cosa con los valores, como enviarlos a un servidor, etc.
     setApodoOk(true);
+
+    // Se crea el objeto Jugadores (con apodo y puntos en 0):
+    const nuevosJugadores = inputApodos.map((apodo, index) => (
+      {
+      apodo,
+      puntos: 0
+      }
+      ));
+    setJugadores(nuevosJugadores);
+  
 
   };
 

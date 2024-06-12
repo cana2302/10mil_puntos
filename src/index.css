@@ -58,22 +58,40 @@ body {
   color: #222;
 }
 
-.board .game {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.turn {
-  display: flex;
-  justify-content: center;
-  margin: 15px auto;
+.tablerito {
   width: fit-content;
-  position: relative;
-  border-radius: 10px;
+  margin: 40px auto;
+  text-align: center;
 }
 
-.turn .square,
+.tablerito div {
+  border: solid 1px white;
+}
+
+.tablerito h1 {
+  color: #eee;
+  margin-bottom: 16px;
+}
+
+.tablerito button {
+  padding: 8px 12px;
+  margin: 25px;
+  background: transparent;
+  border: 2px solid #eee;
+  color: #eee;
+  width: 100px;
+  border-radius: 5px;
+  transition: 0.2s;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.tablerito button:hover {
+  background: #eee;
+  color: #222;
+}
+
+
 .winner .square {
   width: 70px;
   height: 70px;
@@ -81,10 +99,7 @@ body {
   border-color: transparent;
 }
 
-.square.is-selected {
-  color: #fff;
-  background: #09f;
-}
+
 
 .winner {
   position: absolute;
@@ -119,13 +134,3 @@ body {
   gap: 15px;
 }
 
-.square {
-  width: 100px;
-  height: 100px;
-  border: 2px solid #eee;
-  border-radius: 5px;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  font-size: 48px;
-}
