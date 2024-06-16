@@ -5,7 +5,11 @@ const FichaPersonal = ({jugadores}) => {
   return (
     <div>
       {jugadoresPuntos.map((jugador, index) => (
-        <h3 key={index}>{jugador.apodo}: {jugador.puntos} puntos</h3>
+        <div key={index}>
+          <h3>{jugador.apodo}: {jugador.puntos} puntos</h3>
+          <p>faltan: {jugador.missing}</p>
+        </div>
+
       ))}
     </div>
   )

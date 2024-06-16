@@ -1,25 +1,35 @@
-const FormPuntos = () => {
+import { useState } from 'react';
 
-  const handleInput = (event) => {
-    const value = event.target.value;
-  }
+const FormPuntos = ({ index, jugador, onPuntosChange, siguienteTurno }) => {
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const [puntosInput, setPuntosInput] = useState('');
+
+
+  const handleInputChange = (e) => {
+    setPuntosInput(e.target.value);
   };
 
+  const handleConfirmarClick = () => {
+    if (puntosInput !== '') {
+      onPuntosChange(index, puntosInput);
+      setPuntosInput('');
+      siguienteTurno();
+    }
+  };
+
+
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <div>
-        <h3>Turno jugador:</h3>
+        <h3>{jugador.apodo}</h3>
       </div>
       <div>
-        <input  type='text'  onChange={handleInput} placeholder=' puntos'/>
+        <input type='number' value={puntosInput} onChange={handleInputChange} placeholder=' puntos'/>
       </div>
       <div>
-        <button type='submit'>Enter</button>
+        <button onClick={handleConfirmarClick} disabled={puntosInput === ''}>Enter</button>
       </div>       
-    </form>
+    </div>
   )
 }
 export default FormPuntos

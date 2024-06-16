@@ -24,11 +24,12 @@ const FormApodos = ({ numberOfInputs, inputApodos, setInputApodos, setApodoOk, s
     const nuevosJugadores = inputApodos.map((apodo, index) => (
       {
       apodo,
-      puntos: 0
+      puntos: 0,
+      missing: 10000
       }
       ));
     setJugadores(nuevosJugadores);
-  
+    console.log(nuevosJugadores); 
 
   };
 

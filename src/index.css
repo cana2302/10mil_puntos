@@ -29,6 +29,10 @@ body {
   box-sizing: border-box;
 }
 
+.formPuntos {
+  padding: 15px;
+}
+
 .board {
   width: fit-content;
   margin: 40px auto;
@@ -53,8 +57,26 @@ body {
   cursor: pointer;
 }
 
+.reset button {
+  padding: 8px 12px;
+  margin: 25px;
+  background: rgb(57, 13, 13);
+  border: 2px solid #eee;
+  color: #eee;
+  width: 100px;
+  border-radius: 5px;
+  transition: 0.2s;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .board button:hover {
   background: #eee;
+  color: #222;
+}
+
+.reset:hover {
+  background: #af3b3b;
   color: #222;
 }
 
@@ -91,16 +113,6 @@ body {
   color: #222;
 }
 
-
-.winner .square {
-  width: 70px;
-  height: 70px;
-  pointer-events: none;
-  border-color: transparent;
-}
-
-
-
 .winner {
   position: absolute;
   width: 100vw;
@@ -133,4 +145,5 @@ body {
   display: flex;
   gap: 15px;
 }
+
 
