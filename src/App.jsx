@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import confetti from 'canvas-confetti';
 import FormInicial from './components/FormInicial';
 import FormApodos from './components/FormApodos';
 import FichaPersonal from './components/FichaPersonal';
@@ -9,19 +8,14 @@ import Ganador from './components/Ganador';
 function App() {
 
   const [winner, setWinner] = useState(null);
-
   const [inputInicial, setInputInicial] = useState('')
-
   // Número de jugadores:
   const [cantidadJugadores, setCantidadJugadores] = useState('');
   const [error, setError] = useState('');
-
   const [inputApodos, setInputApodos] = useState([]);
   const [apodoOk, setApodoOk] = useState(false);
-  
   /* Array de objetos[{..},{..},{..}]. Objeto[0]: {apodo:xxx, puntos:999, missing:10000} */
   const [jugadores, setJugadores] = useState([]);
-
   const [turno, setTurno] = useState(0);
 
   const resetGame = () => {
@@ -42,6 +36,10 @@ function App() {
     nuevosJugadores[index].puntos += parseInt(nuevosPuntos, 10);
     nuevosJugadores[index].missing -= parseInt(nuevosPuntos, 10);
     setJugadores(nuevosJugadores);
+
+    if (jugadores[turno].puntos >= 10000) {
+      setWinner(true);
+    }
     /*
     if (nuevosJugadores[index].puntos >= 10000) {
       alert(`Ganador ${nuevosJugadores[index].apodo}`);
@@ -74,13 +72,11 @@ function App() {
 
   } if (apodoOk) {
 
-    console.log(turno);
     console.log(jugadores);
-    console.log((jugadores[turno]).puntos);
+    console.log(`Turno ${turno}`);
+    console.log(`jugadores[turno]).apodo ${(jugadores[turno]).apodo}`);
+    console.log(`jugadores[turno]).puntos ${(jugadores[turno]).puntos}`);
 
-    if (jugadores[turno].puntos >= 10000) {
-      setWinner(true);
-    }
 
     return (
       <main className='tablerito'>
@@ -90,7 +86,7 @@ function App() {
           <FichaPersonal jugadores={jugadores} />
         </div>
         <div className='formPuntos'>
-            <FormPuntos index={turno} jugador={jugadores[turno]} onPuntosChange={handlePuntosChange} siguienteTurno={siguienteTurno} />
+            <FormPuntos index={turno} jugador={jugadores[turno]} onPuntosChange={handlePuntosChange} siguienteTurno={siguienteTurno} winner={winner}/>
         </div>
         {winner && <Ganador nuevosJugadores={jugadores} index={turno} winner={winner} setWinner={setWinner}/>}
         

@@ -17,7 +17,7 @@ const FormApodos = ({ numberOfInputs, inputApodos, setInputApodos, setApodoOk, s
   // Función para manejar el submit del formulario
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Valores ingresados:', inputApodos);
+    console.log('Apodos ingresados:', inputApodos);
     setApodoOk(true);
 
     // Se crea el objeto Jugadores (con apodo y puntos en 0):
@@ -29,8 +29,6 @@ const FormApodos = ({ numberOfInputs, inputApodos, setInputApodos, setApodoOk, s
       }
       ));
     setJugadores(nuevosJugadores);
-    console.log(nuevosJugadores); 
-
   };
 
   return (

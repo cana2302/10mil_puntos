@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const FormPuntos = ({ index, jugador, onPuntosChange, siguienteTurno }) => {
+const FormPuntos = ({ index, jugador, onPuntosChange, siguienteTurno, winner }) => {
 
   const [puntosInput, setPuntosInput] = useState('');
 
@@ -13,7 +13,9 @@ const FormPuntos = ({ index, jugador, onPuntosChange, siguienteTurno }) => {
     if (puntosInput !== '') {
       onPuntosChange(index, puntosInput);
       setPuntosInput('');
-      siguienteTurno();
+      if (winner !== true) {
+        siguienteTurno();
+      };
     }
   };
 
