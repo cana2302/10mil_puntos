@@ -21,17 +21,20 @@ const FormPuntos = ({ index, jugador, onPuntosChange, siguienteTurno, winner }) 
 
 
   return (
-    <div>
+    <>
+      <p>Turno</p>
       <div>
-        <h3>{jugador.apodo}</h3>
+        <div>
+          <h3>{jugador.apodo}</h3>
+        </div>
+        <div>
+          <input type='number' value={puntosInput} onChange={handleInputChange} placeholder=' puntos'/>
+        </div>
+        <div>
+          <button onClick={handleConfirmarClick} disabled={puntosInput === ''}>Enter</button>
+        </div>       
       </div>
-      <div>
-        <input type='number' value={puntosInput} onChange={handleInputChange} placeholder=' puntos'/>
-      </div>
-      <div>
-        <button onClick={handleConfirmarClick} disabled={puntosInput === ''}>Enter</button>
-      </div>       
-    </div>
+    </>
   )
 }
 export default FormPuntos

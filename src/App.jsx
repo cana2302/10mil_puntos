@@ -90,12 +90,14 @@ function App() {
         <div>
           <FichaPersonal jugadores={jugadores} />
         </div>
+        <br />
+        <br />
         {!fin && <div className='formPuntos'>
             <FormPuntos index={turno} jugador={jugadores[turno]} onPuntosChange={handlePuntosChange} siguienteTurno={siguienteTurno} winner={winner}/>
         </div>}
         {winner && <Ganador setFin={setFin} setWinner={setWinner} apodoWinner={apodoWinner}/>}
         
-
+        <br />
         <footer>
           <button className='reset' onClick={resetGame}>Reset</button>
         </footer>
