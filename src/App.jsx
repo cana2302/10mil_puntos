@@ -7,7 +7,7 @@ import Ganador from './components/Ganador';
 
 function App() {
 
-  const [winner, setWinner] = useState(null);
+  const [winner, setWinner] = useState(false);
   const [inputInicial, setInputInicial] = useState('')
   // Número de jugadores:
   const [cantidadJugadores, setCantidadJugadores] = useState('');
@@ -17,6 +17,8 @@ function App() {
   /* Array de objetos[{..},{..},{..}]. Objeto[0]: {apodo:xxx, puntos:999, missing:10000} */
   const [jugadores, setJugadores] = useState([]);
   const [turno, setTurno] = useState(0);
+  const [fin, setFin] = useState(false);
+  const [apodoWinner, setApodoWinner] = useState('');
 
   const resetGame = () => {
     const confirmacion = window.confirm('¿Estás seguro de resetear?');
@@ -28,6 +30,8 @@ function App() {
       setApodoOk(false);
       setJugadores([]);
       setTurno(0);
+      setFin(false);
+      setApodoWinner('');
     } 
   }
 
@@ -39,6 +43,7 @@ function App() {
 
     if (jugadores[turno].puntos >= 10000) {
       setWinner(true);
+      setApodoWinner(jugadores[turno].apodo);
     }
     /*
     if (nuevosJugadores[index].puntos >= 10000) {
@@ -85,10 +90,10 @@ function App() {
         <div>
           <FichaPersonal jugadores={jugadores} />
         </div>
-        <div className='formPuntos'>
+        {!fin && <div className='formPuntos'>
             <FormPuntos index={turno} jugador={jugadores[turno]} onPuntosChange={handlePuntosChange} siguienteTurno={siguienteTurno} winner={winner}/>
-        </div>
-        {winner && <Ganador nuevosJugadores={jugadores} index={turno} winner={winner} setWinner={setWinner}/>}
+        </div>}
+        {winner && <Ganador setFin={setFin} setWinner={setWinner} apodoWinner={apodoWinner}/>}
         
 
         <footer>

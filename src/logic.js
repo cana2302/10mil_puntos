@@ -8,7 +8,7 @@ export const sumarPuntos = (jugadores, turno, puntosDelInput) => {
       return jugadores[turno].apodo;
     }
     if (jugadores[turno].puntos > 10000) {
-      jugadores[turno].puntos = jugadore[turno].puntos - puntosDelInput
+      jugadores[turno].puntos = jugadores[turno].puntos - puntosDelInput
       return false
     };
   };
