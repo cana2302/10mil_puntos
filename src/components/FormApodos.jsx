@@ -1,53 +1,62 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
+import { stringify } from 'uuid';
 
-const FormApodos = ({ numberOfInputs, inputApodos, setInputApodos, setApodoOk, setJugadores }) => {
+const FormApodos = ({ cantidadJugadores, setJugadores, menu3 }) => {
 
-  // Actualiza el estado cuando cambia el número de inputs
-  useEffect(() => {
-    setInputApodos(Array(numberOfInputs).fill(''));
-  }, [numberOfInputs]);
-
-  // Función para manejar cambios en los inputs
-  const handleInputChange = (index, event) => {
-    const newValues = [...inputApodos];
-    newValues[index] = event.target.value;
-    setInputApodos(newValues);
-  };
+  // Estado APODOS (input)
+  const [apodos, setApodos] = useState(() => {
+    const apodosFromStorage = window.localStorage.getItem('apodos')
+    return apodosFromStorage ? JSON.parse(apodosFromStorage) : Array(cantidadJugadores).fill('')
+  });
 
   // Función para manejar el submit del formulario
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Apodos ingresados:', inputApodos);
-    setApodoOk(true);
 
     // Se crea el objeto Jugadores (con apodo y puntos en 0):
-    const nuevosJugadores = inputApodos.map((apodo, index) => (
+    const nuevosJugadores = apodos.map((apodo, index) => (
       {
-      apodo,
+      apodo: apodo,
       puntos: 0,
-      missing: 10000
+      missing: 10000,
+      turno: index === 0 ? true : false,
+      ganador: false
       }
       ));
+    window.localStorage.setItem('apodos', JSON.stringify(...apodos));  
+    setApodos(...apodos);
+    window.localStorage.setItem('jugadores', JSON.stringify(nuevosJugadores));
     setJugadores(nuevosJugadores);
+    menu3();
   };
 
+  const handleInput = (index, event) => {
+    const value = event.target.value;
+    const nuevosApodos = [...apodos];
+    nuevosApodos[index] = value;
+    window.localStorage.setItem('apodos', JSON.stringify(nuevosApodos));
+    setApodos(nuevosApodos);
+  }
+ 
   return (
     <form onSubmit={handleSubmit}>
-      {Array.from({ length: numberOfInputs }, (_, index) => (
-        <div key={index}>
-          <label>
-            Apodo: {index + 1}:
-            <input
-              type="text"
-              value={inputApodos[index]}
-              onChange={(event) => handleInputChange(index, event)}
-            />
-          </label>
-        </div>
-      ))}
-      <button type="submit">Enter</button>
+      <div className='apodos'>
+        <ul>
+          {apodos.map((_, index) => (
+            <li key={index}>
+              <label>Apodo {(index+1)}: </label>
+              <input type='text' value={apodos[index]} onChange={(event) => handleInput(index, event)}/>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <button type="submit">Enter</button>
+      </div>
+
     </form>
-  );
-};
-  
+  )
+
+}
 export default FormApodos

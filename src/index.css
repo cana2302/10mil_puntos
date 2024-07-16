@@ -29,22 +29,18 @@ body {
   box-sizing: border-box;
 }
 
-.formPuntos {
-  padding: 15px;
-}
-
-.board {
+.pantalla {
   width: fit-content;
   margin: 40px auto;
   text-align: center;
 }
 
-.board h1 {
+.pantalla h1 {
   color: #eee;
   margin-bottom: 16px;
 }
 
-.board button {
+.pantalla button {
   padding: 8px 12px;
   margin: 25px;
   background: transparent;
@@ -57,45 +53,22 @@ body {
   cursor: pointer;
 }
 
-.reset button {
-  padding: 8px 12px;
-  margin: 25px;
-  background: rgb(57, 13, 13);
-  border: 2px solid #eee;
-  color: #eee;
-  width: 100px;
-  border-radius: 5px;
-  transition: 0.2s;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.board button:hover {
+.pantalla button:hover {
   background: #eee;
   color: #222;
 }
 
-.reset:hover {
-  background: #af3b3b;
-  color: #222;
-}
-
-.tablerito {
-  width: fit-content;
-  margin: 40px auto;
+.pantalla input {
+  height: 35px;
   text-align: center;
+  margin-top: 5px;
 }
 
-.tablerito div div{
-  border: solid 1px white;
+.pantalla img {
+  width: 130px;
 }
 
-.tablerito h1 {
-  color: #eee;
-  margin-bottom: 16px;
-}
-
-.tablerito button {
+.reset button{
   padding: 8px 12px;
   margin: 25px;
   background: transparent;
@@ -108,9 +81,24 @@ body {
   cursor: pointer;
 }
 
-.tablerito button:hover {
-  background: #eee;
-  color: #222;
+.reset button:hover {
+  background: #cf0101;
+  color: #fcfafa;
+}
+
+.apodos input {
+  width: 140px;
+  height: 35px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.highlight {
+  background-color: rgba(156, 243, 156, 0.188); /* Verde claro medio transparente */
+}
+
+.winner1 {
+  background-color: rgba(255, 217, 0, 0.682); /* Puedes ajustar este color a tu preferencia */
 }
 
 .winner {
@@ -148,4 +136,12 @@ body {
   gap: 15px;
 }
 
+.formPuntos {
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.divformPuntos {
+  margin-top: 15px;
+}
 
