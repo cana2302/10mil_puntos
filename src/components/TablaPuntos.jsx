@@ -7,12 +7,11 @@ const TablaPuntos = ({ jugadores }) => {
 
   const tableStyle = {
     width: '350px',
-    borderCollapse: 'collapse',
+    borderCollapse: 'separate',
     textAlign: 'center',
     padding: '8px',
     border: '2px solid white',
-    borderRadius: '10px', /* Puntas redondeadas */
-    borderCollapse: 'separate' 
+    borderRadius: '10px' /* Puntas redondeadas */
   };
 
   const cellStyle = {
