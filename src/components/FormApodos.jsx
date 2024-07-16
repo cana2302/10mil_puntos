@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { stringify } from 'uuid';
 
 const FormApodos = ({ cantidadJugadores, setJugadores, menu3 }) => {
 
